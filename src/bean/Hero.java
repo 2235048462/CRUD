@@ -38,3 +38,8 @@ public class Hero {
         this.damage = damage;
     }
 }
+
+@Override
+    public String toString () {
+        return "Hero [name=" + name + ",hp=" + hp + ",damage=" + damage + "]";
+    }
