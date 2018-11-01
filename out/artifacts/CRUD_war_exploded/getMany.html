@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用Ajax方式获取数据</title>
+    <script type="text/javascript" src="jquery.min.js"></script>
+</head>
+<body>
+<input type="button" value="通过Ajax获取多个Hero对象" id="sender">
+<div id="messageDiv"></div>
+<script>
+    $('#sender').click(function () {
+        var url = "getManyServlet";
+        $.post(
+            url,
+            function (data) {
+                var heroes = $.parseJSON(data);
+                for (i in heroes) {
+                    var old = $("#messageDiv").html();
+                    var hero = heroes[i];
+                    $("#messageDiv").html(old + "<br>" + hero.name + "------" + hero.hp + "------" + hero.damage);
+                }
+            }
+        );
+    });
+</script>
+</body>
+</html>
